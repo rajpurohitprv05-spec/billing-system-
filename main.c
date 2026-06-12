@@ -27,7 +27,37 @@ int main()
             break;
         default:
             printf("Invalid selection\n");
+
+
     }
+
+    printf("Do you want to keep shopping? (y for yes, n for no): ");
+    scanf(" %c", &choice);
+
+    if (choice == 'y' || choice == 'Y')
+    {
+        printf("nAvailable fruits:\n");
+
+        if(choice != 1)
+        {
+            printf("1. apple\n");
+        }
+        else if(choice != 2)
+        {
+            printf("2. Banana\n");
+        }
+        else if(choice != 3)
+        {
+            printf("3. Grapes\n");
+        }   
+        /* code */
+    }
+
+    else
+    {
+        printf("Thank you for shopping with us!\n");
+    }
+    
 
     return 0;
 }
