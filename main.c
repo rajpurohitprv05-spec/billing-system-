@@ -5,6 +5,8 @@ int main()
     int choice;
     char again;
     float quantity;
+    float totalBill = 0;
+    float applePrice = 120, bananaPrice = 60, grapesPrice = 150;
     
     int apple = 1 , banana = 1, grapes = 1;
     do
@@ -30,17 +32,19 @@ int main()
             {
                 printf("how many kg do you want to buy? ");
                 scanf("%f", &quantity);
-                printf("You selected apple : %.2f kg\n", quantity);
+                totalBill += quantity * applePrice;
+                printf("You selected Apple : %.2f kg\n", quantity);
                  apple = 0;
             }
             else
-                printf("apple are alerady purchased\n");
+                printf("Apple    are alerady purchased\n");
             break;
         case 2:
             if(banana)            
             {
                 printf("how many kg do you want to buy? ");
                 scanf("%f", &quantity);
+                totalBill += quantity * bananaPrice;
                 printf("You selected Banana : %.2f kg\n", quantity);
                  banana = 0;
             }
@@ -52,6 +56,7 @@ int main()
             {
                 printf("how many kg do you want to buy? ");
                 scanf("%f", &quantity);
+                totalBill += quantity * grapesPrice;
                 printf("You selected Grapes : %.2f kg\n", quantity);
                  grapes = 0;
             }
@@ -74,6 +79,7 @@ int main()
     } while (again == 'y' || again == 'Y');
 
     printf("Thank you for shopping with us!\n");
+    printf("Total Bill: Rs %.2f\n", totalBill);
 
     return 0;
 }
