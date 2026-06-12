@@ -4,7 +4,7 @@ int main()
 {
     int choice;
     char again;
-    float quantity;
+    float quantity = 0;
     float totalBill = 0;
     float applePrice = 120, bananaPrice = 60, grapesPrice = 150;
     
@@ -14,15 +14,15 @@ int main()
          printf("Welcome to the fruit shop!\n");
 
          if(apple)
-         printf("1. apple\n");
+         printf("1. apple (Rs %.2f/kg)\n", applePrice);
 
          if(banana)
-         printf("2. Banana\n");
+         printf("2. Banana (Rs %.2f/kg)\n", bananaPrice);
 
          if(grapes)
-         printf("3. Grapes\n");
+         printf("3. Grapes (Rs %.2f/kg)\n", grapesPrice);
 
-        printf("Please select a fruit (1-3): ");
+        printf("select from above: ");
         scanf("%d", &choice);
 
         switch (choice)
@@ -32,6 +32,11 @@ int main()
             {
                 printf("how many kg do you want to buy? ");
                 scanf("%f", &quantity);
+                if(quantity < 0)
+                {
+                    printf("Invalid quantity\n");
+                    break;
+                }
                 totalBill += quantity * applePrice;
                 printf("You selected Apple : %.2f kg\n", quantity);
                  apple = 0;
@@ -44,6 +49,11 @@ int main()
             {
                 printf("how many kg do you want to buy? ");
                 scanf("%f", &quantity);
+                if(quantity < 0)
+                {
+                    printf("Invalid quantity\n");
+                    break;
+                }
                 totalBill += quantity * bananaPrice;
                 printf("You selected Banana : %.2f kg\n", quantity);
                  banana = 0;
@@ -56,6 +66,11 @@ int main()
             {
                 printf("how many kg do you want to buy? ");
                 scanf("%f", &quantity);
+                if(quantity < 0)
+                {
+                    printf("Invalid quantity\n");
+                    break;
+                }
                 totalBill += quantity * grapesPrice;
                 printf("You selected Grapes : %.2f kg\n", quantity);
                  grapes = 0;
@@ -80,6 +95,25 @@ int main()
 
     printf("Thank you for shopping with us!\n");
     printf("Total Bill: Rs %.2f\n", totalBill);
+
+    printf("\n");
+    printf("=========================================\n");
+    printf("          fruit shop bill receipt        \n");
+    printf("=========================================\n");
+    printf("%-20s %10s %10s\n", "Item", "Quantity", "Price");
+    printf("-----------------------------------------\n");
+    if(quantity > 0){
+        printf("%-20s %10.2f %10.2f\n", "Apple", quantity, quantity * applePrice);
+    }
+    if(quantity > 0){
+        printf("%-20s %10.2f %10.2f\n", "Banana", quantity, quantity * bananaPrice);
+    }
+    if(quantity > 0){
+        printf("%-20s %10.2f %10.2f\n", "Grapes", quantity, quantity * grapesPrice);
+    }
+    printf("-----------------------------------------\n");
+    printf("%-20s %10s %10.2f\n", "Total", "", totalBill);
+    printf("=========================================\n");
 
     return 0;
 }
