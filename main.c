@@ -11,7 +11,7 @@ int main()
     int apple = 1 , banana = 1, grapes = 1;
     do
     {
-         printf("fruit shop\n");
+         printf("Welcome to the fruit shop!\n");
 
          if(apple)
          printf("1. apple\n");
@@ -37,7 +37,7 @@ int main()
                  apple = 0;
             }
             else
-                printf("Apple    are alerady purchased\n");
+                printf("Apple are alerady purchased\n");
             break;
         case 2:
             if(banana)            

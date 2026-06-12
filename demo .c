@@ -1,108 +1,77 @@
-#include <stdio.h>
+#include<stdio.h>
 
 int main()
 {
     int choice;
-    char again = 'y';
-
-    float appleQty = 0, bananaQty = 0, grapesQty = 0;
+    int again;
     float quantity;
+    float totalPrice = 0;
+    float applePrice=80 , bananaPrice=60 , grapesPrice=80;
 
-    float applePrice = 120;
-    float bananaPrice = 60;
-    float grapesPrice = 150;
+    int apple=1, banana=1 , grapes=1;
 
-    float totalBill = 0;
+    do{
 
-    int apple = 1, banana = 1, grapes = 1;
+        printf("welcome to my fuit shop!");
+        
+        if (apple)
+        printf("1.Apple\n");
 
-    do
-    {
-        printf("\nFruit Shop\n");
+        if (banana)
+        printf("2.Banana\n");
+        
+        if (grapes)
+        printf("3.Grapes\n");
+       
 
-        if(apple)
-            printf("1. Apple (Rs %.2f/kg)\n", applePrice);
+        printf("please select a fruit (1-3): ");
+        scanf("%d",&choice);
 
-        if(banana)
-            printf("2. Banana (Rs %.2f/kg)\n", bananaPrice);
 
-        if(grapes)
-            printf("3. Grapes (Rs %.2f/kg)\n", grapesPrice);
-
-        printf("Select a fruit: ");
-        scanf("%d", &choice);
-
-        switch(choice)
-        {
-            case 1:
-                if(apple)
-                {
-                    printf("How many kg? ");
-                    scanf("%f", &quantity);
-
-                    appleQty = quantity;
-                    totalBill += quantity * applePrice;
-                    apple = 0;
-                }
+        switch(choice){
+            if(apple){
+                case 1:
+                printf("how much kg you want to buy:");
+                scanf("%f\n" , &quantity);
+                totalPrice += applePrice*quantity;
+                printf("you selected apple:%.2f\n", quantity);
+                apple=0;
                 break;
+            }
 
-            case 2:
-                if(banana)
-                {
-                    printf("How many kg? ");
-                    scanf("%f", &quantity);
-
-                    bananaQty = quantity;
-                    totalBill += quantity * bananaPrice;
-                    banana = 0;
-                }
+            if(banana){
+                case 2:
+                printf("how much kg you want to buy:");
+                scanf("%f\n" , &quantity);
+                totalPrice += bananaPrice*quantity;
+                printf("you selected banana:%.2f\n", quantity);
+                banana=0;
                 break;
+            }
 
-            case 3:
-                if(grapes)
-                {
-                    printf("How many kg? ");
-                    scanf("%f", &quantity);
-
-                    grapesQty = quantity;
-                    totalBill += quantity * grapesPrice;
-                    grapes = 0;
-                }
+            if(grapes){
+                case 3:
+                printf("how much kg you want to buy:");
+                scanf("%f\n" , &quantity);
+                totalPrice += grapesPrice*quantity;
+                printf("you selected grapes:%.2f\n", quantity);
+                grapes=0;
                 break;
+            }
 
-            default:
-                printf("Invalid choice!\n");
+            if(!apple && !banana && !grapes){
+                printf("all fruits are already purchased\n");
+                break;
+            }
+
+            printf("do you want to keep shopping(y=yes / n=No):");
+            scanf(" %c", &again);
         }
-
-        if(!apple && !banana && !grapes)
-            break;
-
-        printf("Continue shopping? (y/n): ");
-        scanf(" %c", &again);
-
     } while(again == 'y' || again == 'Y');
-
-    printf("\n");
-    printf("=================================\n");
-    printf("          FRUIT RECEIPT\n");
-    printf("=================================\n");
-
-    if(appleQty > 0)
-        printf("Apple   %.2f kg   Rs %.2f\n",
-               appleQty, appleQty * applePrice);
-
-    if(bananaQty > 0)
-        printf("Banana  %.2f kg   Rs %.2f\n",
-               bananaQty, bananaQty * bananaPrice);
-
-    if(grapesQty > 0)
-        printf("Grapes  %.2f kg   Rs %.2f\n",
-               grapesQty, grapesQty * grapesPrice);
-
-    printf("---------------------------------\n");
-    printf("Total Bill      Rs %.2f\n", totalBill);
-    printf("=================================\n");
-    printf("Thank You! Visit Again.\n");
-
+    
+    printf("thank you for shopping with us!\n");
+    printf("total bill: rs %.2f \n", totalPrice);
     return 0;
+
+
 }
