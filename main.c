@@ -4,6 +4,7 @@ int main()
 {
     int choice;
     char again;
+    char extra;
     float appleQty = 0, bananaQty = 0, grapesQty = 0;
     float totalBill = 0;
     float applePrice = 120, bananaPrice = 60, grapesPrice = 150;
@@ -31,7 +32,12 @@ int main()
             if(apple)
             {
                 printf("how many kg do you want to buy? ");
-                scanf("%f", &appleQty);
+                if(scanf("%f%c", &appleQty, &extra) != 2 || extra != '\n')
+                {
+                    printf("Invalid input\n");
+                    while(getchar() != '\n'); // clear input buffer
+                    break;
+                }
                 if(appleQty < 0)
                 {
                     printf("Invalid quantity\n");
@@ -48,7 +54,12 @@ int main()
             if(banana)            
             {
                 printf("how many kg do you want to buy? ");
-                scanf("%f", &bananaQty);
+                if(scanf("%f%c", &bananaQty, &extra) != 2 || extra != '\n')
+                {
+                    printf("Invalid input\n");
+                    while(getchar() != '\n'); // clear input buffer
+                    break;
+                }
                 if(bananaQty < 0)
                 {
                     printf("Invalid quantity\n");
@@ -65,7 +76,12 @@ int main()
             if(grapes)            
             {
                 printf("how many kg do you want to buy? ");
-                scanf("%f", &grapesQty);
+                if(scanf("%f%c", &grapesQty, &extra) != 2 || extra != '\n')
+                {
+                    printf("Invalid input\n");
+                    while(getchar() != '\n'); // clear input buffer
+                    break;
+                }
                 if(grapesQty < 0)
                 {
                     printf("Invalid quantity\n");
